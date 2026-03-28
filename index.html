@@ -10,69 +10,73 @@
     <style>
         body { font-family: 'Sarabun', sans-serif; }
         
-        /* สไตล์ปุ่มสีแดงไล่เฉด (สร้างด้วย CSS) */
-        .custom-red-button {
+        .btn-red {
             background: linear-gradient(to bottom, #eb4444 0%, #b91c1c 100%);
             border: 1px solid #fca5a5;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
             transition: all 0.2s;
+            color: white;
         }
 
-        /* เมื่อปุ่มถูกเลือก (Active) ให้จางลงตามที่คุณต้องการ */
         .btn-active {
             opacity: 0.4;
-            transform: scale(0.98);
-            box-shadow: none;
+            transform: scale(0.95);
         }
 
-        .banner-box img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: contain;
+        /* ส่วนล่างสีม่วงตามรูป */
+        .footer-purple {
+            background-color: #6311f3; /* สีม่วงตามรูปภาพที่ส่งมา */
+            color: #a5f3fc; /* ตัวหนังสือสีฟ้าอ่อนตามรูป */
         }
     </style>
 </head>
 <body class="bg-slate-50 flex flex-col h-screen overflow-hidden">
 
-    <div class="banner-box border-b-4 border-blue-500">
-        <img src="img/banner.gif" alt="แบนเนอร์จังหวัดเชียงใหม่">
-    </div>
+    <header class="banner-box shadow-sm z-30 flex-none">
+        <img src="img/banner.gif" alt="แบนเนอร์" class="w-full h-auto max-h-[120px] object-cover">
+    </header>
 
-    <div class="flex flex-1 overflow-hidden">
-        <aside class="w-64 bg-slate-900 p-6 flex flex-col gap-4 shadow-2xl">
-            <h2 class="text-white text-sm font-bold mb-2 opacity-50 uppercase tracking-widest">Main Menu</h2>
-            
+    <div class="flex flex-1 overflow-hidden relative">
+        
+        <aside class="w-20 md:w-56 bg-slate-950 flex flex-col items-center md:items-stretch p-3 md:p-6 gap-3 shadow-xl z-20">
             <button id="nav-home" onclick="showPage('home')" 
-                class="custom-red-button btn-active w-full py-3 px-4 rounded-xl text-white font-bold flex items-center justify-center gap-2">
-                <i data-lucide="home" class="w-5 h-5"></i> หน้าแรก
+                class="btn-red btn-active w-full py-2.5 rounded-xl flex flex-col md:flex-row items-center justify-center gap-1 md:gap-3">
+                <i data-lucide="home" class="w-5 h-5"></i>
+                <span class="text-[10px] md:text-sm font-bold">หน้าแรก</span>
             </button>
 
             <button id="nav-history" onclick="showPage('history')" 
-                class="custom-red-button w-full py-3 px-4 rounded-xl text-white font-bold flex items-center justify-center gap-2">
-                <i data-lucide="history" class="w-5 h-5"></i> ประวัติ
+                class="btn-red w-full py-2.5 rounded-xl flex flex-col md:flex-row items-center justify-center gap-1 md:gap-3">
+                <i data-lucide="history" class="w-5 h-5"></i>
+                <span class="text-[10px] md:text-sm font-bold">ประวัติ</span>
             </button>
         </aside>
 
-        <main class="flex-1 p-10 overflow-y-auto">
-            <div id="page-home" class="space-y-6">
-                <h1 class="text-3xl font-bold text-blue-900">ยินดีต้อนรับสู่แหล่งเรียนรู้</h1>
-                <div class="p-20 bg-white rounded-3xl shadow-xl border border-blue-100 text-center">
-                    <p class="text-gray-500">เนื้อหาหน้าแรกปรากฏที่นี่...</p>
+        <main class="flex-1 overflow-y-auto p-4 md:p-10 bg-white">
+            <div id="page-home" class="max-w-2xl mx-auto text-center space-y-6">
+                <h1 class="text-2xl font-bold text-blue-900 mt-4 uppercase tracking-tight">Career Skills Learning</h1>
+                <div class="p-16 bg-slate-50 rounded-[2rem] border-2 border-dashed border-slate-200">
+                    <p class="text-slate-400">เลือกเมนูเพื่อเริ่มต้นการเรียนรู้</p>
                 </div>
             </div>
 
-            <div id="page-history" class="hidden space-y-6">
-                <h1 class="text-3xl font-bold text-red-800">ประวัติการใช้งาน</h1>
-                <div class="p-20 bg-white rounded-3xl shadow-xl border border-red-100 text-center">
-                    <p class="text-gray-500">ข้อมูลประวัติปรากฏที่นี่...</p>
+            <div id="page-history" class="hidden max-w-2xl mx-auto space-y-6">
+                <h1 class="text-2xl font-bold text-red-800 border-b pb-2">ประวัติการใช้งาน</h1>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 italic text-slate-400">
+                    ยังไม่มีข้อมูลประวัติ
                 </div>
             </div>
         </main>
     </div>
 
+    <footer class="footer-purple py-4 px-6 text-center shadow-[0_-4px_10px_rgba(0,0,0,0.1)] z-30 flex-none">
+        <div class="space-y-1">
+            <p class="font-bold text-sm md:text-base">นายชวัลวิทย์ รสแก้ว</p>
+            <p class="text-xs md:text-sm">ชั้นมัธยมศึกษาปีที่ 5/3 เลขที่ 4</p>
+            <p class="text-[10px] md:text-xs opacity-90 uppercase tracking-widest">โรงเรียนดงเจนวิทยาคม</p>
+        </div>
+    </footer>
+
     <script>
-        // เริ่มต้นสร้างไอคอน Lucide
         lucide.createIcons();
 
         function showPage(pageName) {
@@ -82,17 +86,13 @@
             const historyPage = document.getElementById('page-history');
 
             if (pageName === 'home') {
-                // สลับหน้า
                 homePage.classList.remove('hidden');
                 historyPage.classList.add('hidden');
-                // จัดการความจางของปุ่ม (Active = จาง)
                 homeBtn.classList.add('btn-active');
-                historyBtn.classList.remove('btn-active'); 
+                historyBtn.classList.remove('btn-active');
             } else {
-                // สลับหน้า
                 homePage.classList.add('hidden');
                 historyPage.classList.remove('hidden');
-                // จัดการความจางของปุ่ม (Active = จาง)
                 homeBtn.classList.remove('btn-active');
                 historyBtn.classList.add('btn-active');
             }
